@@ -22,6 +22,12 @@ export function InfiniteSpecies() {
     }
   );
 
+  const loadMore = () => {
+    if (!isFetchingNextPage) {
+      fetchNextPage();
+    }
+  };
+
   if (isLoading) {
     return <div className="loading">Loading...</div>;
   }
@@ -33,10 +39,7 @@ export function InfiniteSpecies() {
   return (
     <>
       {isFetching && <div className="loading">Loading ...</div>}
-      <InfiniteScroll
-        loadMore={fetchNextPage}
-        hasMore={!isFetchingNextPage && hasNextPage}
-      >
+      <InfiniteScroll loadMore={loadMore} hasMore={hasNextPage}>
         {data.pages.map((page) =>
           page.results.map((species) => (
             <Species
