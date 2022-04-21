@@ -5,8 +5,8 @@ import { useTreatments } from './hooks/useTreatments';
 import { Treatment } from './Treatment';
 
 export function Treatments(): ReactElement {
-  // replace with data from React Query
   const treatments = useTreatments();
+
   return (
     <Box>
       <Heading mt={10} align="center">
