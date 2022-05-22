@@ -101,6 +101,12 @@ export function useAppointments(): UseAppointments {
     () => getAppointments(monthYear.year, monthYear.month),
     {
       select: selectAppointments,
+      staleTime: 0,
+      cacheTime: 300000, // 5 minutes
+      refetchOnMount: true,
+      refetchOnReconnect: true,
+      refetchOnWindowFocus: true,
+      refetchInterval: 60000, // 1 minute
     },
   );
 
